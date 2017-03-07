@@ -31,9 +31,9 @@ This is the repository the SigFig Take-Home Assignment:
 
 ## UI Screenshot
 
-PLACEHOLDER
+Photo Gallery with Grid
 
-![UI](http://i.imgur.com/ZaUskNL.png)
+![UI](http://i.imgur.com/6Qq6W7Y.jpg)
 
 ## Future Work
 

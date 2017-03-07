@@ -24,7 +24,7 @@ This is the repository the SigFig Take-Home Assignment:
 
 3 - Install Node Packages: ```> npm install```
 
-4 - Start your server: ```nodemon```
+4 - Start your server: ```> nodemon```
 
 5 - View your application at: [http://localhost:3000](http://localhost:3000/).
 

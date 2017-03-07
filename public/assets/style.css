@@ -1,0 +1,23 @@
+body {
+  background-color: #000000;
+  color: #FFFFFF;
+}
+#photos {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#header h1 {
+  text-align: center;
+}
+
+.photo {
+  display: inline-block;
+  width: 25%;
+  padding: 2% 2%;
+}
+
+.photo img {
+  width: 100%;
+}

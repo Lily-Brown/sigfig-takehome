@@ -50,12 +50,8 @@ function propogateForward(html,start,end) {
 }
 
 function propogateBackward(html,start,end) {
-  console.log("end:",end);
-  console.log("start:",start);
   for (var i=start-1; i >= end; i--) {
-    console.log("i:",i);
     var target = document.getElementById("div"+i);
-    console.log("target:",target);
     html.id = i;
     if (target.children[0] == undefined) {
       target.appendChild(html);

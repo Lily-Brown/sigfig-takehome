@@ -38,32 +38,28 @@ function drop(ev) {
 // Moves photos around if photo is dragged forward
 function propogateForward(html,start,end) {
   for (var i=start+1; i <= end; i++) {
-    var target = document.getElementById('div'+i);
-    html.id = i;
-    if (target.children[0] == undefined) {
-      target.appendChild(html);
-    } else {
-      tempHtml = target.children[0];
-      target.removeChild(target.children[0]);
-      target.appendChild(html);
-      html = tempHtml;
-    }
+    html = switchPhoto(html,i);
   }
 }
 
 // Moves photos around if photo is dragged backward
 function propogateBackward(html,start,end) {
   for (var i=start-1; i >= end; i--) {
-    var target = document.getElementById('div'+i);
-    html.id = i;
-    if (target.children[0] == undefined) {
-      target.appendChild(html);
-    } else {
-      tempHtml = target.children[0];
-      target.removeChild(target.children[0]);
-      target.appendChild(html);
-      html = tempHtml;
-    }
+    html = switchPhoto(html,i);
+  }
+}
+
+// Switches Photo
+function switchPhoto(html,i) {
+  var target = document.getElementById('div'+i);
+  html.id = i;
+  if (target.children[0] == undefined) {
+    target.appendChild(html);
+  } else {
+    tempHtml = target.children[0];
+    target.removeChild(target.children[0]);
+    target.appendChild(html);
+    return tempHtml;
   }
 }
 

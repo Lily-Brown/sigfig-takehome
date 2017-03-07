@@ -26,3 +26,9 @@ body {
 .drop {
   padding: 5% 5%;
 }
+
+.highlight {
+  -webkit-box-shadow:0 0 30px #FFFFFF;
+  -moz-box-shadow: 0 0 30px #FFFFFF;
+  box-shadow:0 0 30px #FFFFFF;
+}

@@ -1,6 +1,8 @@
 body {
   background-color: #000000;
   color: #FFFFFF;
+  font-family: 'Fjalla One', sans-serif;
+  font-size: 18px;
 }
 #photos {
   width: 90%;
@@ -15,9 +17,12 @@ body {
 .photo {
   display: inline-block;
   width: 25%;
-  padding: 2% 2%;
 }
 
 .photo img {
   width: 100%;
+}
+
+.drop {
+  padding: 5% 5%;
 }

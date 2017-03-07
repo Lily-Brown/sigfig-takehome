@@ -35,11 +35,14 @@ Photo Gallery with Grid
 
 ![UI](http://i.imgur.com/6Qq6W7Y.jpg)
 
+## Casino Take Home
+
+Solution for the Casino Challenge can be found here: [Casino.md](https://github.com/Lily-Brown/sigfig-takehome/blob/master/Casino.md)
+
 ## Future Work
 
-Placeholder:
+Future Features:
 
-- Placeholder
-- Placeholder
-- Placeholder
-- Placeholder
+- Add 'Highlight and Move' Option to rearrange photos with keyboard
+- Add Arrows for another way to rearrange photos
+- Save Data to JSON so that on reload, the order is preserved

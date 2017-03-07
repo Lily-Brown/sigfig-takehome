@@ -1,13 +1,16 @@
 console.log('Assets connected.');
 
+// Drag function
 function drag(ev) {
   ev.dataTransfer.setData('image', ev.target.id);
 }
 
+// Prevent default for AllowDrop
 function allowDrop(ev) {
   ev.preventDefault();
 }
 
+// Drop function
 function drop(ev) {
   ev.preventDefault();
   var target = document.getElementById(ev.target.id);
@@ -34,6 +37,7 @@ function drop(ev) {
   }
 }
 
+// Moves photos around if photo is dragged forward
 function propogateForward(html,start,end) {
   for (var i=start+1; i <= end; i++) {
     var target = document.getElementById("div"+i);
@@ -49,6 +53,7 @@ function propogateForward(html,start,end) {
   }
 }
 
+// Moves photos around if photo is dragged backward
 function propogateBackward(html,start,end) {
   for (var i=start-1; i >= end; i--) {
     var target = document.getElementById("div"+i);
@@ -70,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+
+      // Add photos to page from JSON
       photos = JSON.parse(this.responseText);
       photos.forEach(function(v,i) {
         var photoDiv = document.createElement('div');
@@ -98,6 +105,8 @@ document.addEventListener('DOMContentLoaded', function(event) {
       }
     }
   };
+
+  //XHTTP requests
   xhttp.open('GET', 'resources/photos.json', true);
   xhttp.send();
 

@@ -52,15 +52,32 @@ function propogateBackward(html,start,end) {
 // Switches Photo
 function switchPhoto(html,i) {
   var target = document.getElementById('div'+i);
+  console.log("target:",target)
   html.id = i;
   if (target.children[0] == undefined) {
     target.appendChild(html);
   } else {
     tempHtml = target.children[0];
+    console.log("tempHtml:",tempHtml);
     target.removeChild(target.children[0]);
     target.appendChild(html);
     return tempHtml;
   }
+}
+
+
+// Moves photo left and right based on key stroke
+function move(highlightedElement,direction) {
+  var elementID = parseInt(highlightedElement.id);
+  var switchID;
+  if (direction === "left") {
+    switchID = elementID-1;
+  }
+  else {
+    switchID = elementID+1;
+  }
+  var switchedHTML = switchPhoto(highlightedElement,switchID);
+  switchPhoto(switchedHTML,elementID);
 }
 
 document.addEventListener('DOMContentLoaded', function(event) {
@@ -91,11 +108,25 @@ document.addEventListener('DOMContentLoaded', function(event) {
           target = event.target;
           if (!target.classList.contains('highlight') && (document.getElementsByClassName('highlight').length==0)) {
             target.classList.add('highlight');
-            target.addEventListener
           } else {
             target.classList.remove('highlight');
           }
         });
+      }
+
+      document.onkeydown = checkKey;
+      function checkKey(e) {
+        e = e || window.event;
+        var highlightElements = document.getElementsByClassName('highlight');
+        if (highlightElements.length > 0) {
+          var highlighted = highlightElements[0];
+          if (e.keyCode == '37') {
+            move(highlighted,"left");
+          }
+          else if (e.keyCode == '39') {
+            move(highlighted,"right");
+          }
+        }
       }
     }
   };

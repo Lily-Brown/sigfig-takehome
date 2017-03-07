@@ -10,15 +10,15 @@ function allowDrop(ev) {
 
 function drop(ev) {
   ev.preventDefault();
-  target = document.getElementById(ev.target.id);
+  var target = document.getElementById(ev.target.id);
   if (!target.id.includes("div")) {
     target = target.parentNode;
   }
-  id = target.id.replace("div","");
-  html = target.children[0];
+  var id = target.id.replace("div","");
+  var html = target.children[0];
   html.id = parseInt(id)+1;
   target.removeChild(target.children[0]);  
-  data = ev.dataTransfer.getData('image');
+  var data = ev.dataTransfer.getData('image');
   target.appendChild(document.getElementById(data));
   target.children[0].id = id;
   propogate(html,target.id,data);
@@ -28,7 +28,7 @@ function propogate(html,start,end) {
   start = parseInt(start.replace("div",""));
   end = parseInt(end);
   for (var i=start+1; i <= end; i++) {
-    target = document.getElementById("div"+i);
+    var target = document.getElementById("div"+i);
     html.id = i;
     if (target.children[0] == undefined) {
       target.appendChild(html);
@@ -41,7 +41,9 @@ function propogate(html,start,end) {
   }
 }
 
-function xhttpGet() {
+document.addEventListener('DOMContentLoaded', function(event) {
+
+  var photos;
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -61,11 +63,5 @@ function xhttpGet() {
   };
   xhttp.open('GET', 'resources/photos.json', true);
   xhttp.send();
-}
-
-document.addEventListener('DOMContentLoaded', function(event) {
-
-  var photos;
-  xhttpGet();
 
 });

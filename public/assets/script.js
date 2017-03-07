@@ -81,7 +81,21 @@ document.addEventListener('DOMContentLoaded', function(event) {
           "'>" +
           "</div>";
         document.getElementById('photos').appendChild(photoDiv);
-      })
+      });
+
+      // Adds highlighting for images
+      var imgElements = document.getElementsByClassName('photo');
+      for (var i=0; i<imgElements.length; i++) {
+        imgElements[i].addEventListener("dblclick",function(event){
+          target = event.target;
+          console.log(target.classList)
+          if (!target.classList.contains('highlight') && (document.getElementsByClassName('highlight').length==0)) {
+            target.classList.add('highlight');
+          } else {
+            target.classList.remove('highlight');
+          }
+        });
+      }
     }
   };
   xhttp.open('GET', 'resources/photos.json', true);

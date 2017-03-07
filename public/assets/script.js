@@ -11,22 +11,30 @@ function allowDrop(ev) {
 function drop(ev) {
   ev.preventDefault();
   var target = document.getElementById(ev.target.id);
+  var data = ev.dataTransfer.getData('image');
   if (!target.id.includes("div")) {
     target = target.parentNode;
   }
-  var id = target.id.replace("div","");
-  var html = target.children[0];
-  html.id = parseInt(id)+1;
-  target.removeChild(target.children[0]);  
-  var data = ev.dataTransfer.getData('image');
-  target.appendChild(document.getElementById(data));
-  target.children[0].id = id;
-  propogate(html,target.id,data);
+  start = parseInt(target.id.replace("div",""));
+  end = parseInt(data);
+  if (start === end) {
+    console.log("hi");
+  } else {
+    var id = target.id.replace("div","");
+    var html = target.children[0];
+    html.id = parseInt(id)+1;
+    target.removeChild(target.children[0]);
+    target.appendChild(document.getElementById(data));
+    target.children[0].id = id;
+  }
+  if (start < end) {
+    propogateForward(html,start,end);
+  } else {
+    propogateBackward(html,end,start);
+  }
 }
 
-function propogate(html,start,end) {
-  start = parseInt(start.replace("div",""));
-  end = parseInt(end);
+function propogateForward(html,start,end) {
   for (var i=start+1; i <= end; i++) {
     var target = document.getElementById("div"+i);
     html.id = i;
@@ -34,11 +42,15 @@ function propogate(html,start,end) {
       target.appendChild(html);
     } else {
       tempHtml = target.children[0];
-      target.removeChild(target.children[0]); 
+      target.removeChild(target.children[0]);
       target.appendChild(html);
       html = tempHtml;
     }
   }
+}
+
+function propogateBackward(html,start,end) {
+  // placeholder
 }
 
 document.addEventListener('DOMContentLoaded', function(event) {

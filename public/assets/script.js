@@ -15,15 +15,13 @@ function drop(ev) {
   ev.preventDefault();
   var target = document.getElementById(ev.target.id);
   var data = ev.dataTransfer.getData('image');
-  if (!target.id.includes("div")) {
+  if (!target.id.includes('div')) {
     target = target.parentNode;
   }
-  start = parseInt(target.id.replace("div",""));
+  start = parseInt(target.id.replace('div',''));
   end = parseInt(data);
-  if (start === end) {
-    console.log("hi");
-  } else {
-    var id = target.id.replace("div","");
+  if (start !== end) {
+    var id = target.id.replace('div','');
     var html = target.children[0];
     html.id = parseInt(id)+1;
     target.removeChild(target.children[0]);
@@ -40,7 +38,7 @@ function drop(ev) {
 // Moves photos around if photo is dragged forward
 function propogateForward(html,start,end) {
   for (var i=start+1; i <= end; i++) {
-    var target = document.getElementById("div"+i);
+    var target = document.getElementById('div'+i);
     html.id = i;
     if (target.children[0] == undefined) {
       target.appendChild(html);
@@ -56,7 +54,7 @@ function propogateForward(html,start,end) {
 // Moves photos around if photo is dragged backward
 function propogateBackward(html,start,end) {
   for (var i=start-1; i >= end; i--) {
-    var target = document.getElementById("div"+i);
+    var target = document.getElementById('div'+i);
     html.id = i;
     if (target.children[0] == undefined) {
       target.appendChild(html);
@@ -93,11 +91,11 @@ document.addEventListener('DOMContentLoaded', function(event) {
       // Adds highlighting for images
       var imgElements = document.getElementsByClassName('photo');
       for (var i=0; i<imgElements.length; i++) {
-        imgElements[i].addEventListener("dblclick",function(event){
+        imgElements[i].addEventListener('dblclick',function(event){
           target = event.target;
-          console.log(target.classList)
           if (!target.classList.contains('highlight') && (document.getElementsByClassName('highlight').length==0)) {
             target.classList.add('highlight');
+            target.addEventListener
           } else {
             target.classList.remove('highlight');
           }

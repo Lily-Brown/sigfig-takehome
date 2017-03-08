@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-This is the repository the SigFig Take-Home Assignment: 
+This is the repository for the SigFig Take-Home Assignment:
 
 "Create a webpage that displays a gallery of images, given a JSON array containing a list of image URLs."
 
@@ -35,9 +35,6 @@ Photo Gallery with Grid
 
 ![UI](http://i.imgur.com/6Qq6W7Y.jpg)
 
-## Casino Take Home
-
-Solution for the Casino Challenge can be found here: [Casino.md](https://github.com/Lily-Brown/sigfig-takehome/blob/master/Casino.md)
 
 ## Features
 
@@ -46,7 +43,9 @@ Solution for the Casino Challenge can be found here: [Casino.md](https://github.
 
 ## Future Work
 
-Future Features:
-
 - Add Arrows for another way to rearrange photos
 - Save Data to JSON so that on reload, the order is preserved
+
+## Casino Take Home
+
+Solution for the Casino Challenge can be found here: [Casino.md](https://github.com/Lily-Brown/sigfig-takehome/blob/master/Casino.md)

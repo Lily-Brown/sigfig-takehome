@@ -52,29 +52,28 @@ function propogateBackward(html,start,end) {
 // Switches Photo
 function switchPhoto(html,i) {
   var target = document.getElementById('div'+i);
-  console.log("target:",target)
   html.id = i;
   if (target.children[0] == undefined) {
     target.appendChild(html);
   } else {
     tempHtml = target.children[0];
-    console.log("tempHtml:",tempHtml);
     target.removeChild(target.children[0]);
     target.appendChild(html);
     return tempHtml;
   }
 }
 
-
 // Moves photo left and right based on key stroke
 function move(highlightedElement,direction) {
   var elementID = parseInt(highlightedElement.id);
   var switchID;
-  if (direction === "left") {
+  if (direction === "left" && elementID > 1) {
     switchID = elementID-1;
   }
-  else {
+  else if (direction === "right" && elementID < 12) {
     switchID = elementID+1;
+  } else {
+    switchID = elementID;
   }
   var switchedHTML = switchPhoto(highlightedElement,switchID);
   switchPhoto(switchedHTML,elementID);

@@ -63,7 +63,7 @@ function switchPhoto(html,i) {
   }
 }
 
-// Moves photo left and right based on key stroke
+// Moves photo up, down, left or right based on key stroke
 function move(highlightedElement,direction) {
   var elementID = parseInt(highlightedElement.id);
   var switchID;
@@ -72,6 +72,10 @@ function move(highlightedElement,direction) {
   }
   else if (direction === "right" && elementID < 12) {
     switchID = elementID+1;
+  } else if (direction === "up" && elementID > 4) {
+    switchID = elementID-4;
+  } else if (direction === "down" && elementID < 8) {
+    switchID = elementID+4;
   } else {
     switchID = elementID;
   }
@@ -128,9 +132,12 @@ document.addEventListener('DOMContentLoaded', function(event) {
           var highlighted = highlightElements[0];
           if (e.keyCode == '37') {
             move(highlighted,"left");
-          }
-          else if (e.keyCode == '39') {
+          } else if (e.keyCode == '39') {
             move(highlighted,"right");
+          } else if (e.keyCode == '38') {
+            move(highlighted,"up");
+          } else if (e.keyCode == '40') {
+            move(highlighted,"down");
           }
         }
       }

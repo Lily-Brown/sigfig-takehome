@@ -39,10 +39,14 @@ Photo Gallery with Grid
 
 Solution for the Casino Challenge can be found here: [Casino.md](https://github.com/Lily-Brown/sigfig-takehome/blob/master/Casino.md)
 
+## Features
+
+- Users can Drag and Drop photos to rearrange the photo order
+- Users can Double Click a photo to select it and then use the Arrow keys to move it around on the page
+
 ## Future Work
 
 Future Features:
 
-- Add 'Highlight and Move' Option to rearrange photos with keyboard
 - Add Arrows for another way to rearrange photos
 - Save Data to JSON so that on reload, the order is preserved

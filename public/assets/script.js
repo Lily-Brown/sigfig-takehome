@@ -102,13 +102,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
       // Adds highlighting for images
       var imgElements = document.getElementsByClassName('photo');
+      var hightlightElements = document.getElementsByClassName('highlight');
       for (var i=0; i<imgElements.length; i++) {
         imgElements[i].addEventListener('dblclick',function(event){
-          target = event.target;
-          if (!target.classList.contains('highlight') && (document.getElementsByClassName('highlight').length==0)) {
+          var target = event.target;
+          if (!target.classList.contains('highlight') && (hightlightElements.length===0)) {
             target.classList.add('highlight');
           } else {
             target.classList.remove('highlight');
+          }
+        });
+        imgElements[i].addEventListener('click',function(event){
+          var target = event.target;
+          if (!target.classList.contains('highlight') && (hightlightElements.length===1)) {
+            hightlightElements[0].classList.remove('highlight');
           }
         });
       }

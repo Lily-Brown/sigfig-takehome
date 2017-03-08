@@ -52,29 +52,28 @@ function propogateBackward(html,start,end) {
 // Switches Photo
 function switchPhoto(html,i) {
   var target = document.getElementById('div'+i);
-  console.log("target:",target)
   html.id = i;
   if (target.children[0] == undefined) {
     target.appendChild(html);
   } else {
     tempHtml = target.children[0];
-    console.log("tempHtml:",tempHtml);
     target.removeChild(target.children[0]);
     target.appendChild(html);
     return tempHtml;
   }
 }
 
-
 // Moves photo left and right based on key stroke
 function move(highlightedElement,direction) {
   var elementID = parseInt(highlightedElement.id);
   var switchID;
-  if (direction === "left") {
+  if (direction === "left" && elementID > 1) {
     switchID = elementID-1;
   }
-  else {
+  else if (direction === "right" && elementID < 12) {
     switchID = elementID+1;
+  } else {
+    switchID = elementID;
   }
   var switchedHTML = switchPhoto(highlightedElement,switchID);
   switchPhoto(switchedHTML,elementID);
@@ -103,13 +102,20 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
       // Adds highlighting for images
       var imgElements = document.getElementsByClassName('photo');
+      var hightlightElements = document.getElementsByClassName('highlight');
       for (var i=0; i<imgElements.length; i++) {
         imgElements[i].addEventListener('dblclick',function(event){
-          target = event.target;
-          if (!target.classList.contains('highlight') && (document.getElementsByClassName('highlight').length==0)) {
+          var target = event.target;
+          if (!target.classList.contains('highlight') && (hightlightElements.length===0)) {
             target.classList.add('highlight');
           } else {
             target.classList.remove('highlight');
+          }
+        });
+        imgElements[i].addEventListener('click',function(event){
+          var target = event.target;
+          if (!target.classList.contains('highlight') && (hightlightElements.length===1)) {
+            hightlightElements[0].classList.remove('highlight');
           }
         });
       }

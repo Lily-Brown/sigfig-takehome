@@ -69,12 +69,11 @@ function move(highlightedElement,direction) {
   var switchID;
   if (direction === "left" && elementID > 1) {
     switchID = elementID-1;
-  }
-  else if (direction === "right" && elementID < 12) {
+  } else if (direction === "right" && elementID < 12) {
     switchID = elementID+1;
   } else if (direction === "up" && elementID > 4) {
     switchID = elementID-4;
-  } else if (direction === "down" && elementID < 8) {
+  } else if (direction === "down" && elementID < 9) {
     switchID = elementID+4;
   } else {
     switchID = elementID;
@@ -124,6 +123,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
         });
       }
 
+      // onKeyDown events
       document.onkeydown = checkKey;
       function checkKey(e) {
         e = e || window.event;
